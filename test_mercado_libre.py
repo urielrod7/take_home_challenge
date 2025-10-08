@@ -5,11 +5,10 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-
 
 
 def prueba_mercado_libre():
@@ -20,8 +19,13 @@ def prueba_mercado_libre():
     # Aquí configuramos el navegador Chrome para ser controlado por el script con la clase ChromeOptions.
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")  # Inicia el navegador maximizado.
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+    service = Service(ChromeDriverManager().install())
 
+    #Metodo manual
+    #service = Service(executable_path="chromedriver.exe")
+    
+    # Pasamos los valores a la variable driver para que realice la conexión al navegador.
+    driver = webdriver.Chrome(service=service, options=options)
     
     # Definimos una espera explícita global de 20 segundos. 
     # Si un elemento no aparece en ese tiempo, el script fallará.
@@ -116,4 +120,5 @@ def prueba_mercado_libre():
 # --- 5. EJECUCIÓN ---
 # Se ejecuta la función.
 if __name__ == "__main__":
+
     prueba_mercado_libre()
