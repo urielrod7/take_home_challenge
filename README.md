@@ -67,7 +67,13 @@ Este script utiliza `webdriver-manager` para gestionar el driver de Chrome autom
 
 Si esto ocurre, el script se puede cambiar fácilmente a un **método manual** siguiendo estos pasos:
 
-### 1. Modificar el Script
+### 1. Descargar el `chromedriver.exe` Manualmente
+
+1.  **Verifica tu versión de Chrome** (en **Ayuda > Acerca de Google Chrome**).
+2.  Descarga el driver que coincida **exactamente** con tu versión desde el [Chrome for Testing Dashboard](https://googlechromelabs.github.io/chrome-for-testing/).
+3.  Coloca el archivo `chromedriver.exe` en la misma carpeta que el script.
+
+### 2. Modificar el Script
 Abre el archivo `test_mercado_libre.py` y realiza los siguientes cambios:
 
 ```python
