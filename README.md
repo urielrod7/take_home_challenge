@@ -61,6 +61,24 @@ python test_mercado_libre.py
 
 El script abrirá una ventana de Google Chrome, realizará todos los pasos de forma automática y finalmente imprimirá los resultados en la misma terminal desde la que lo ejecutaste.
 
+## 🔧 Solución de Problemas (Troubleshooting)
+
+Este script utiliza `webdriver-manager` para gestionar el driver de Chrome automáticamente. Sin embargo, en algunos sistemas con firewalls estrictos o ciertas configuraciones de red, este método puede fallar. El síntoma más común es un error que detiene el script al inicio con un mensaje vacío (`Message:`).
+
+Si esto ocurre, el script se puede cambiar fácilmente a un **método manual** siguiendo estos pasos:
+
+### 1. Modificar el Script
+Abre el archivo `test_mercado_libre.py` y realiza los siguientes cambios:
+
+```python
+# Comenta estas dos líneas del método automático:
+# from webdriver_manager.chrome import ChromeDriverManager
+# service = Service(ChromeDriverManager().install())
+
+# Y descomenta esta línea para activar el método manual:
+service = Service(executable_path="chromedriver.exe")
+```
+
 ## ✅ Salida Esperada
 
 La salida en la consola se verá similar a esto (los nombres y precios variarán):
