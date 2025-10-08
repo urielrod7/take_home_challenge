@@ -16,17 +16,18 @@ def prueba_mercado_libre():
     Función principal de la prueba de automatización.
     """
     # --- 2. CONFIGURACIÓN DEL WEBDRIVER ---
-    # Aquí configuramos el navegador Chrome para ser controlado por el script con la clase ChromeOptions.
+    # Aquí configuramos el navegador Chrome para ser controlado por el script con la clase ChromeOptions de forma automática.
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")  # Inicia el navegador maximizado.
     service = Service(ChromeDriverManager().install())
 
-    #Metodo manual
+    # Método manual.
     #service = Service(executable_path="chromedriver.exe")
     
     # Pasamos los valores a la variable driver para que realice la conexión al navegador.
     driver = webdriver.Chrome(service=service, options=options)
-    
+
+
     # Definimos una espera explícita global de 20 segundos. 
     # Si un elemento no aparece en ese tiempo, el script fallará.
     espera = WebDriverWait(driver, 20) 
@@ -36,7 +37,7 @@ def prueba_mercado_libre():
     # el script imprima un mensaje final.
     try:
         # --- PASO 1 y 2: NAVEGACIÓN Y BÚSQUEDA ---
-        # Ingresamos directamente a Mercado Libre México
+        # Ingresamos directamente a Mercado Libre México.
         driver.get("https://www.mercadolibre.com.mx/")
 
         # Intentamos cerrar los banners de cookies que puedan aparecer.
@@ -48,7 +49,7 @@ def prueba_mercado_libre():
         except Exception:
             print("No se encontró el banner de cookies inicial.")
 
-        # Ingresamos y buscamos la cadena playstation 5
+        # Ingresamos y buscamos la cadena playstation 5.
         barra_busqueda = espera.until(EC.presence_of_element_located((By.ID, "cb1-edit")))
         barra_busqueda.send_keys("playstation 5")
         barra_busqueda.send_keys(Keys.ENTER)
@@ -120,5 +121,4 @@ def prueba_mercado_libre():
 # --- 5. EJECUCIÓN ---
 # Se ejecuta la función.
 if __name__ == "__main__":
-
     prueba_mercado_libre()
